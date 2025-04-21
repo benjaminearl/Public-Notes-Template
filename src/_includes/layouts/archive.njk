@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+<!-- archive.layout -->
+<section class="archive posts">
+  <p class="archive-info">There are {{ collections.posts | length }} notes in this archive and it was last updated on {{ generated }}</p>
+  <ul class="archive">
+    {% for post in collections.posts %}
+    <a href="{{ post.url }}">
+      <li class="archive-items">
+            {% if post.data.title | length %}
+              <p>{{ post.data.title }}</p>
+            {% else %}
+              <p>{{ post.date | postDate }}</p>
+            {% endif %}
+        </li>
+        </a>
+      {% endfor %}
+    </ul>
+</section>

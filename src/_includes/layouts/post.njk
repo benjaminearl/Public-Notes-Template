@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+<!-- post.layout -->
+<section class="posts">
+  <article class="post">
+    <div class="date">
+      <a href="{{ page.url }}">{{ page.date | postDate }}</a>
+    </div>
+    <div class="content">
+    {% if title | length %}
+      <h1 class="title">{{ title }}</h1>
+    {% endif %}
+      {{ content | safe}}
+    </div>
+  </article>
+</section>
+<footer>
+    <p><a href="/archive">go back</a></p>
+</footer>
+
+

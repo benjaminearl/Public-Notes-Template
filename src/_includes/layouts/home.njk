@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+---
+<!-- home.layout -->
+<section class="posts">
+    {% for post in collections.posts %}
+      {% if loop.index <= 1 %}
+    <article class="post">
+        <div class="date">
+          <a href="{{ post.url }}">{{ post.date | postDate }}</a>
+        </div>
+        <div class="content">
+          {% if post.data.title | length %}
+            <h1 class="title">{{ post.data.title }}</h1>
+          {% endif %}
+          {{ post.content | safe}}
+          {% for tag in post.data.tags | filterTagList %}
+	          {% set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+	          <p class="tags"><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</p>
+	        {% endfor %}
+        </div>
+      </article>
+      {% endif %}
+    {% endfor %}
+    <footer>
+      <p class="footer-item"><a href="/archive">all notes</a></p>
+      <p class="footer-item"><a href="The URL of your RSS">rss</a></p>
+    </footer>
+</section>
